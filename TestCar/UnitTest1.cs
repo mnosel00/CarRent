@@ -12,7 +12,7 @@ namespace TestCar
         {
             ICRUDCarRepo cars = new MemoCarRepo();
             HomeController controller = new HomeController(cars);
-            CreateViewModel aCar = (CreateViewModel)controller.Create(new CreateViewModel());
+            CreateViewModel aCar = (CreateViewModel)controller.Create(new CreateViewModel(){ Id = 1, Make = "Honda", Model = "Accord", Type = "Sport", Trim = "EXL", Vin = "1234567689", Millage = "10000000", Price = 80000 });
             Assert.Equal(1, aCar.Id);
             
 
