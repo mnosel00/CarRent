@@ -1,0 +1,14 @@
+﻿@model int
+@{
+    ViewBag.Title = "Wrong ID";
+
+}
+
+<div class="alert alert-danger mt-1 mb-1">
+    <h1>
+        Item Not Found: 
+    </h1>
+    <br />
+    <h3>Item with such ID = @Model do not exist</h3>
+</div>
+<a asp-action="List" asp-controller="home" class="btn btn-outline-success">Go back to see List of Items</a>
