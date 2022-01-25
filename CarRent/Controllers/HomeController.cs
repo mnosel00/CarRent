@@ -61,19 +61,6 @@ namespace CarRent.Controllers
         {
             if (ModelState.IsValid)
             {
-                /* Car newCar = new Car()
-                 {
-                     Make = newmodel.Make,
-                     Model = newmodel.Model,
-                     Type = newmodel.Type,
-                     Trim = newmodel.Trim,
-                     Vin = newmodel.Vin,
-                     ReleaseDate = newmodel.ReleaseDate,
-                     Millage = newmodel.Millage,
-                     Price = newmodel.Price
-                 };
-                 _carRepo.Add(newCar);
-                 return RedirectToAction("Details", new { Id = newCar.Id });*/
 
                 Car newCar = new Car()
                 {

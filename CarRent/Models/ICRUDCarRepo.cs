@@ -8,6 +8,7 @@ namespace CarRent.Models
         IEnumerable<Car> GetAllCar();
         Car Add(Car car);
         Car Update(Car carUpdate);
-        Car Delete (int Id);
+        void Delete (int Id);
+        
     }
 }

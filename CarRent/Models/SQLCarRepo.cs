@@ -16,7 +16,13 @@ namespace CarRent.Models
             return car;
         }
 
-        public Car Delete(int Id)
+        public void Delete(int Id)
+        {
+            context.Card.Remove(context.Card.Find(Id));
+            context.SaveChanges();
+        }
+
+        /*public Car Delete(int Id)
         {
             Car car = context.Card.Find(Id);
             if(car != null)
@@ -25,7 +31,8 @@ namespace CarRent.Models
                 context.SaveChanges();
             }
             return car;
-        }
+        }*/
+
 
         public IEnumerable<Car> GetAllCar()
         {
@@ -44,5 +51,7 @@ namespace CarRent.Models
             context.SaveChanges();
             return carUpdate;
         }
+
+      
     }
 }

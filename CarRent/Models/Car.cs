@@ -27,7 +27,7 @@ namespace CarRent.Models
 
         [Display(Name = "Release Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:y}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy}")]
         [Required]
         public DateTime ReleaseDate { get; set; }
 

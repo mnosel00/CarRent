@@ -60,6 +60,11 @@ namespace CarRent.Models
             }
             return car;
         }
+
+        void ICRUDCarRepo.Delete(int Id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
 }

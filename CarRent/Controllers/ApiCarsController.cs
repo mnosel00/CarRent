@@ -9,7 +9,7 @@ using CarRent.Models;
 
 namespace CarRent.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/context")]
     [ApiController]
     public class ApiCarsController : ControllerBase
     {
