@@ -66,7 +66,6 @@ namespace CarRent.Controllers
                 {
                     Make = newmodel.Make,
                     Model = newmodel.Model,
-                    Type = newmodel.Type,
                     Trim = newmodel.Trim,
                     Vin = newmodel.Vin,
                     ReleaseDate = newmodel.ReleaseDate,
@@ -92,7 +91,6 @@ namespace CarRent.Controllers
                 Id = car.Id,
                 Make = car.Make,
                 Model = car.Model,
-                Type = car.Type,
                 Trim = car.Trim,
                 Vin = car.Vin,
                 ReleaseDate = car.ReleaseDate,
@@ -111,7 +109,6 @@ namespace CarRent.Controllers
                 Car car = _carRepo.GetCar(newmodel.Id);
                 car.Make = newmodel.Make;
                 car.Model = newmodel.Model;
-                car.Type = newmodel.Type;
                 car.Trim = newmodel.Trim;
                 car.Vin = newmodel.Vin;
                 car.ReleaseDate = newmodel.ReleaseDate;

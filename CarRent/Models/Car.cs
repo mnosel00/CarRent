@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarRent.Models
 {
@@ -15,9 +16,6 @@ namespace CarRent.Models
         [Required]
         [StringLength(30, MinimumLength = 1)]
         public string Model { get; set; }
-
-        [Required]
-        public string Type { get; set; }
 
         [Required]
         public string Trim { get; set; }
@@ -38,6 +36,16 @@ namespace CarRent.Models
         [Required]
         public decimal Price { get; set; }
 
-       
+        /*public int CompanyId { get; set; }
+
+        [ForeignKey("CompanyId")]
+        public Company Company { get; set; }
+
+
+        public int TypeId { get; set; }
+        [ForeignKey("TypeId")]
+        public Typ Typ { get; set; }*/
+
     }
+
 }

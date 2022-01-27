@@ -34,7 +34,7 @@ namespace TestCar
         {
             ICRUDCarRepo cars = new MemoCarRepo();
             HomeController controller = new HomeController(cars);
-            controller.Create(new CreateViewModel() { Id = 4, Make = "Honda", Model = "Accord", Type = "Sport", Trim = "EXL", Vin = "1234567689", Millage = "10000000", Price = 80000 });
+            controller.Create(new CreateViewModel() { Id = 4, Make = "Honda", Model = "Accord", Trim = "EXL", Vin = "1234567689", Millage = "10000000", Price = 80000 });
 
         }
 

@@ -18,9 +18,9 @@ namespace TestCar
         {
             _carList = new List<Car>()
             {
-             new Car(){Id = 1, Make="Honda",Model="Accord", Type="Sport", Trim="EXL", Vin="1234567689", Millage="10000000", Price=80000, },
-             new Car(){Id = 2, Make="Honda",Model="Accord", Type="Sport", Vin="12345676890", Price=80000, },
-             new Car(){Id = 3, Make="Honda",Model="Accord", Type="Sport", Vin="01234567689", Price=80000, }
+             new Car(){Id = 1, Make="Honda",Model="Accord",  Trim="EXL", Vin="1234567689", Millage="10000000", Price=80000, },
+             new Car(){Id = 2, Make="Honda",Model="Accord", Vin="12345676890", Price=80000, },
+             new Car(){Id = 3, Make="Honda",Model="Accord",  Vin="01234567689", Price=80000, }
             };
         }
 
@@ -58,7 +58,6 @@ namespace TestCar
             {
                 car.Make = carUpdate.Make;
                 car.Model = carUpdate.Model;
-                car.Type = carUpdate.Type;
                 car.Trim = carUpdate.Trim;
                 car.Vin = carUpdate.Vin;
                 car.Millage = carUpdate.Millage;

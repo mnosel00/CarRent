@@ -1,4 +1,4 @@
-using CarRent.Models;
+﻿using CarRent.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CarRent.Data;
 
 
 namespace CarRent
@@ -33,6 +34,9 @@ namespace CarRent
             services.AddControllersWithViews();
             services.AddMvc();
             services.AddScoped<ICRUDCarRepo, SQLCarRepo>();
+
+            services.AddDbContext<CarRentContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("CarRentContext")));
 
             
         }
