@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace CarRent.Models
 {
@@ -15,6 +16,13 @@ namespace CarRent.Models
             context.SaveChanges();
             return car;
         }
+
+        public List<Company> Companies()
+        {
+            return context.Companies.ToList();
+        }
+
+        
 
         public void Delete(int Id)
         {
@@ -33,16 +41,28 @@ namespace CarRent.Models
             return car;
         }*/
 
-
+        
         public IEnumerable<Car> GetAllCar()
         {
             return context.Card;
         }
 
+
+
         public Car GetCar(int Id)
         {
             return context.Card.Find(Id);
         }
+
+        public List<Typ> Types()
+        {
+            return context.Types.ToList();
+        }
+
+        /*  public IList<Typ> Types()
+          {
+              return context.Types.ToList();
+          }*/
 
         public Car Update(Car carUpdate)
         {

@@ -18,9 +18,9 @@ namespace TestCar
         {
             _carList = new List<Car>()
             {
-             new Car(){Id = 1, Make="Honda",Model="Accord",  Trim="EXL", Vin="1234567689", Millage="10000000", Price=80000, },
-             new Car(){Id = 2, Make="Honda",Model="Accord", Vin="12345676890", Price=80000, },
-             new Car(){Id = 3, Make="Honda",Model="Accord",  Vin="01234567689", Price=80000, }
+             new Car(){Id = 1, Make="Honda",Model="Accord",  Trim="EXL", Vin="1234567689", Millage="10000000", Price="80000", },
+             new Car(){Id = 2, Make="Honda",Model="Accord", Vin="12345676890", Price="80000", },
+             new Car(){Id = 3, Make="Honda",Model="Accord",  Vin="01234567689", Price="80000", }
             };
         }
 
@@ -29,6 +29,11 @@ namespace TestCar
             car.Id = _carList.Max(e => e.Id) + 1;
             _carList.Add(car);
             return car;
+        }
+
+        public IList<Company> Companies()
+        {
+            throw new NotImplementedException();
         }
 
         public Car Delete(int Id)
@@ -51,6 +56,11 @@ namespace TestCar
             return _carList.FirstOrDefault(e => e.Id == Id);
         }
 
+        public IList<Typ> Types()
+        {
+            throw new NotImplementedException();
+        }
+
         public Car Update(Car carUpdate)
         {
             Car car = _carList.FirstOrDefault(e => e.Id == carUpdate.Id);
@@ -66,7 +76,17 @@ namespace TestCar
             return car;
         }
 
+        List<Company> ICRUDCarRepo.Companies()
+        {
+            throw new NotImplementedException();
+        }
+
         void ICRUDCarRepo.Delete(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Typ> ICRUDCarRepo.Types()
         {
             throw new NotImplementedException();
         }

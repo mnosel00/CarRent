@@ -22,7 +22,7 @@
                 <input asp-for="Model" class="form-control" />
                 <span asp-validation-for="Model" class="text-danger"></span>
             </div>
-           
+
             <div class="form-group">
                 <label asp-for="Trim" class="control-label"></label>
                 <input asp-for="Trim" class="form-control" />
@@ -48,6 +48,35 @@
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+
+
+                <select asp-for="CompanyId">
+
+                    <option disabled selected>Choose Company</option>
+                    @foreach (var item in ViewBag.Company)
+                    {
+                        <option value=@item.Id>@item.Name</option>
+                    }
+
+                </select>
+            </div>
+            <div class="form-group">
+
+
+                <select asp-for="TypeId">
+
+                    <option disabled selected>Choose Undercarige type</option>
+                    @foreach (var item in ViewBag.Type)
+                    {
+                        <option value=@item.Id>@item.Undercarriage</option>
+                    }
+
+                </select>
+            </div>
+
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -60,5 +89,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }

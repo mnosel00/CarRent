@@ -12,9 +12,9 @@ namespace CarRent.Models
         {
             _carList = new List<Car>()
             {
-             new Car(){Id = 1, Make="Honda",Model="Accord", Trim="EXL", Vin="1234567689", Millage="10000000", Price=80000, },
-             new Car(){Id = 2, Make="Honda",Model="Accord", Vin="12345676890", Price=80000, },
-             new Car(){Id = 3, Make="Honda",Model="Accord",  Vin="01234567689", Price=80000, }
+             new Car(){Id = 1, Make="Honda",Model="Accord", Trim="EXL", Vin="1234567689", Millage="10000000",  },
+             new Car(){Id = 2, Make="Honda",Model="Accord", Vin="12345676890", },
+             new Car(){Id = 3, Make="Honda",Model="Accord",  Vin="01234567689",  }
             };
         }
 
@@ -23,6 +23,11 @@ namespace CarRent.Models
             car.Id=_carList.Max(e => e.Id) + 1;
             _carList.Add(car);
             return car;
+        }
+
+        public List<Company> Companies()
+        {
+            throw new System.NotImplementedException();
         }
 
         public Car Delete(int Id)
@@ -43,6 +48,11 @@ namespace CarRent.Models
         public Car GetCar(int Id)
         {
             return _carList.FirstOrDefault(e => e.Id == Id);
+        }
+
+        public List<Typ> Types()
+        {
+            throw new System.NotImplementedException();
         }
 
         public Car Update(Car carUpdate)

@@ -14,11 +14,17 @@ namespace CarRent.Models
         public DbSet<Car> Card { get; set; }
 
         public DbSet<CarRent.Models.CreateViewModel> CreateViewModel { get; set; }
-        public DbSet<Company> Companies{ get; set; }
-        public DbSet<Typ> Types{ get; set; }
-        
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Typ> Types { get; set; }
 
-      
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.CompanySeed();
+            builder.TypSeed();
+        }
+
+
 
     }
 }

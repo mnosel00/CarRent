@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CarRent.Models.Car>
+﻿@model List<CarRent.Models.Car>
 
 @{
     ViewData["Title"] = "List";
@@ -14,27 +14,34 @@
         <tr>
             
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Make)
+                Make
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Model)
+                Model
             </th>
          
             <th>
-                @Html.DisplayNameFor(model => model.Trim)
+               Trim
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Vin)
+               Vin
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReleaseDate)
+                ReleaseDate
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+               Price
             </th>
+            <th>
+                Company Name
+            </th>
+            <th>
+                Base
+            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -63,7 +70,13 @@
                 @Html.DisplayFor(modelItem => item.ReleaseDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
+                @Html.DisplayFor(modelItem => item.Price) $
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Typ.Undercarriage)
             </td>
             <td>
                  <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

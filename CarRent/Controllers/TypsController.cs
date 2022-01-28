@@ -5,65 +5,59 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using CarRent.Data;
+
 using CarRent.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarRent.Controllers
 {
     public class TypsController : Controller
     {
-        private readonly CarRentContext _context;
+        private readonly AppDbContext _context;
 
-        public TypsController(CarRentContext context)
+        public TypsController(AppDbContext context)
         {
             _context = context;
         }
 
       
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Typ.ToListAsync());
-        }
 
-       
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var typ = await _context.Typ
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (typ == null)
-            {
-                return NotFound();
-            }
-
-            return View(typ);
-        }
-
-       
-        public IActionResult Create()
-        {
             return View();
         }
 
-        
+        public IActionResult List()
+        {
+            var model = _context.Types.ToList();
+            return View(model);
+        }
+
+
+
+        [Authorize]
+        public IActionResult Create()
+        {
+
+            ViewBag.Company = _context.Companies.ToList();
+            return View();
+        }
+
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Undercarriage")] Typ typ)
+        public async Task<IActionResult> Create( Typ typ)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(typ);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("List", new { Id = typ.Id });
             }
             return View(typ);
         }
 
-      
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -71,7 +65,7 @@ namespace CarRent.Controllers
                 return NotFound();
             }
 
-            var typ = await _context.Typ.FindAsync(id);
+            var typ = await _context.Types.FindAsync(id);
             if (typ == null)
             {
                 return NotFound();
@@ -81,8 +75,9 @@ namespace CarRent.Controllers
 
         
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Undercarriage")] Typ typ)
+        public async Task<IActionResult> Edit(int id, Typ typ)
         {
             if (id != typ.Id)
             {
@@ -107,11 +102,11 @@ namespace CarRent.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("List", new { Id = typ.Id });
             }
             return View(typ);
         }
-
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -119,7 +114,7 @@ namespace CarRent.Controllers
                 return NotFound();
             }
 
-            var typ = await _context.Typ
+            var typ = await _context.Types
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (typ == null)
             {
@@ -131,17 +126,18 @@ namespace CarRent.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var typ = await _context.Typ.FindAsync(id);
-            _context.Typ.Remove(typ);
+            var typ = await _context.Types.FindAsync(id);
+            _context.Types.Remove(typ);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("List", new { Id = typ.Id });
         }
 
         private bool TypExists(int id)
         {
-            return _context.Typ.Any(e => e.Id == id);
+            return _context.Types.Any(e => e.Id == id);
         }
     }
 }

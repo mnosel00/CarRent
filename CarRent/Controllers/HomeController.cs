@@ -15,20 +15,33 @@ namespace CarRent.Controllers
     public class HomeController : Controller
     {
         private readonly ICRUDCarRepo _carRepo;
+    
 
         public HomeController(ICRUDCarRepo carRepo)
         {
             _carRepo = carRepo;
+           
         }
 
         public IActionResult Index()
         {
-
+            
             return View();
         }
+
+        
+       
         public IActionResult List()
         {
-            var model = _carRepo.GetAllCar();
+            var model = _carRepo.GetAllCar().ToList();
+            var model2 = _carRepo.Companies();
+            var model3= _carRepo.Types();
+            foreach (var item in model)
+            {
+                item.Company = model2.Where(x => x.Id == item.CompanyId).FirstOrDefault();
+                item.Typ = model3.Where(y => y.Id == item.TypeId).FirstOrDefault();
+
+            }
             return View(model);
         }
 
@@ -52,6 +65,10 @@ namespace CarRent.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            // ViewBag.Company= _carRepo.Companies.ToList();
+            // ViewBag.Typ= _carRepo.Types.ToList();
+            ViewBag.Company = _carRepo.Companies();
+            ViewBag.Type = _carRepo.Types();
             return View();
         }
 
@@ -70,7 +87,10 @@ namespace CarRent.Controllers
                     Vin = newmodel.Vin,
                     ReleaseDate = newmodel.ReleaseDate,
                     Millage = newmodel.Millage,
-                    Price = newmodel.Price
+                    Price = newmodel.Price,
+                    CompanyId = newmodel.CompanyId,
+                    TypeId = newmodel.TypeId,
+                    
                 };
                 _carRepo.Add(newCar);
                 return RedirectToAction("Details", new { Id = newCar.Id });
