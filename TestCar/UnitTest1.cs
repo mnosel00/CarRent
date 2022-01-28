@@ -26,24 +26,6 @@ namespace TestCar
 
         }
 
-
-        [Fact]
-        public void TestAdd()
-        {
-
-            ICRUDCarRepo _carList = new MemoCarRepo();
-     
-            HomeController controller = new HomeController(_carList);
-
-            var res = controller.Create();
-
-            res.Should().NotBeNull();
-            res.Should().BeOfType<ViewResult>();
-            res.Should().BeAssignableTo<IActionResult>();
-        }
-
-
-
         [Fact]
         public void TestAddPost()
         {

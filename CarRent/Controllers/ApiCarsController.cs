@@ -22,16 +22,18 @@ namespace CarRent.Controllers
 
      
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Car>>> GetCard()
+        public ActionResult<IEnumerable<Car>> GetCard()
         {
-            return await _context.Card.ToListAsync();
+            return _context.Card.ToList();
         }
 
        
         [HttpGet("{id}")]
-        public async Task<ActionResult<Car>> GetCar(int id)
+        public ActionResult<Car> GetCar(int id)
         {
-            var car = await _context.Card.FindAsync(id);
+            var car =  _context.Card.Find(id);
+            var car2 =  _context.Companies.Find(id);
+            var car3 =  _context.Companies.Find(id);
 
             if (car == null)
             {
@@ -43,7 +45,7 @@ namespace CarRent.Controllers
 
        
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCar(int id, Car car)
+        public IActionResult PutCar(int id, Car car)
         {
             if (id != car.Id)
             {
@@ -54,7 +56,7 @@ namespace CarRent.Controllers
 
             try
             {
-                await _context.SaveChangesAsync();
+                 _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -73,26 +75,26 @@ namespace CarRent.Controllers
 
         
         [HttpPost]
-        public async Task<ActionResult<Car>> PostCar(Car car)
+        public ActionResult<Car> PostCar(Car car)
         {
             _context.Card.Add(car);
-            await _context.SaveChangesAsync();
+             _context.SaveChanges();
 
             return CreatedAtAction("GetCar", new { id = car.Id }, car);
         }
 
     
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCar(int id)
+        public IActionResult DeleteCar(int id)
         {
-            var car = await _context.Card.FindAsync(id);
+            var car =  _context.Card.Find(id);
             if (car == null)
             {
                 return NotFound();
             }
 
             _context.Card.Remove(car);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
             return NoContent();
         }

@@ -38,7 +38,7 @@ namespace CarRent.Models
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Only numbers are accepted")]
         public string Millage { get; set; }
       
-        
+       // [DataType(DataType.Currency)]
         [Required(ErrorMessage = "Price required")]
         [RegularExpression(@"^\d+(,\d{1,2})?$", ErrorMessage = "Pls provide price in format '$,$' ")]
         public string Price { get; set; }

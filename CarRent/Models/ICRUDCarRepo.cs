@@ -10,7 +10,6 @@ namespace CarRent.Models
         Car Update(Car carUpdate);
         void Delete (int Id);
 
-        // IList<Companies> GetCompanies;
         
         List<Company> Companies();
         List<Typ> Types();

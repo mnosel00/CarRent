@@ -31,20 +31,30 @@ namespace TestCar
             return car;
         }
 
-        public IList<Company> Companies()
+        public List<Company> Companies()
         {
-            throw new NotImplementedException();
+            return Companies();
         }
 
-        public Car Delete(int Id)
+        public void Delete(int Id)
         {
             Car car = _carList.FirstOrDefault(e => e.Id == Id);
             if (car != null)
             {
                 _carList.Remove(car);
             }
-            return car;
+            
         }
+
+        /* public Car Delete(int Id)
+         {
+             Car car = _carList.FirstOrDefault(e => e.Id == Id);
+             if (car != null)
+             {
+                 _carList.Remove(car);
+             }
+             return car;
+         }*/
 
         public IEnumerable<Car> GetAllCar()
         {
@@ -56,9 +66,9 @@ namespace TestCar
             return _carList.FirstOrDefault(e => e.Id == Id);
         }
 
-        public IList<Typ> Types()
+        public List<Typ> Types()
         {
-            throw new NotImplementedException();
+            return Types();
         }
 
         public Car Update(Car carUpdate)
@@ -76,19 +86,14 @@ namespace TestCar
             return car;
         }
 
-        List<Company> ICRUDCarRepo.Companies()
+       /* void ICRUDCarRepo.Delete(int Id)
         {
-            throw new NotImplementedException();
-        }
-
-        void ICRUDCarRepo.Delete(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        List<Typ> ICRUDCarRepo.Types()
-        {
-            throw new NotImplementedException();
-        }
+            Car car = _carList.FirstOrDefault(e => e.Id == Id);
+            if (car != null)
+            {
+                _carList.Remove(car);
+            }
+            
+        }*/
     }
 }
