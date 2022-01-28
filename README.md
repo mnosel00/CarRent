@@ -4,7 +4,7 @@ Plik appsettings.json w ConnectionStrings proszę edytować kod. W miejsce krope
     "CarDbConnection": "Server=.....;Database=Card; Trusted_Connection=True;MultipleActiveResultSets=true"
 
 Proszę wykonać komendy w konsoli menedżera pakietów:
-Add-Migration All
+Add-Migration All,
 Update-Database
 
 Sczegółową instrukcję obsługi aplikacji dołączyłem Panu w pdfie na Teamsie.
